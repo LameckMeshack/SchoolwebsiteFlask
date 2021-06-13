@@ -1,0 +1,54 @@
+{% extends 'base.html' %} {% block content %} {% include '_messages.html' %}
+<div class="container mt-5">
+  <table class="table table-sm table-bordered table-striped">
+    <thead>
+      <th>Unit</th>
+      <th>Code</th>
+      <th>Lecturer</th>
+      <th>Faculty</th>
+      <th>Course</th>
+      <th>WhatsApp Link</th>
+    </thead>
+
+    <tbody>
+      {% if faculty %} {% for f in faculty %}
+      <tr>
+        <td>{{f.name}}</td>
+        <td>{{f.unitcode}}</td>
+        <td>{{f.lecname}}</td>
+        <td>{{f.faculty.name}}</td>
+        <td>{{f.course.name}}</td>
+        <td>
+          <a href="{{f.link}}" class="btn btn-secondary">Join Group</a>
+        </td>
+      </tr>
+
+      {% endfor %} {% elif get_coz_unit %} {% for coz in get_coz_unit %}
+      <tr>
+        <td>{{coz.name}}</td>
+        <td>{{coz.unitcode}}</td>
+        <td>{{coz.lecname}}</td>
+        <td>{{coz.faculty.name}}</td>
+        <td>{{coz.course.name}}</td>
+        <td>
+          <a href="{{coz.link}}" class="btn btn-secondary">Join Group</a>
+        </td>
+      </tr>
+
+      {% endfor %} {% else %} {% for unit in units %}
+      <tr>
+        <td>{{unit.name}}</td>
+        <td>{{unit.unitcode}}</td>
+        <td>{{unit.lecname}}</td>
+        <td>{{unit.faculty.name}}</td>
+        <td>{{unit.course.name}}</td>
+        <td>
+          <a href="{{unit.link}}" class="btn btn-secondary">Join Group</a>
+        </td>
+      </tr>
+
+      {% endfor %}{% endif %}
+    </tbody>
+  </table>
+</div>
+{% endblock content %}

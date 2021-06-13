@@ -1,0 +1,136 @@
+{% extends 'base.html' %} {% block content %} {% include '_messages.html' %}
+<div class="container-lg mt-5">
+  <a href="/addunit" class="btn btn-primary">Add a Unit</a>
+  <a href="/addcourse" class="btn btn-primary">Add Your Course</a>
+</div>
+<div class="container mt-5">
+  <table class="table table-sm table-bordered table-striped">
+    <!-- <thead>
+      <th>Unit</th>
+      <th>Code</th>
+      <th>Lecturer</th>
+      <th>Faculty</th>
+      <th>Course</th>
+      <th>WhatsApp Link</th>
+    </thead> -->
+    <thead>
+        <th>Sr</th>
+        <th>Unit</th>
+        <th>Code</th>
+        <th>Lecturer</th>
+        <th>Faculty</th>
+        <th>Course</th>
+        <th>WhatsApp Link</th>
+        <th>Edit</th>
+        <th>Delete</th>
+      </thead>
+
+    <tbody>
+      {% for unit in units.items %}
+      <tr>
+        <td>{{loop.index}}</td>
+        <td>{{unit.name}}</td>
+        <td>{{unit.unitcode}}</td>
+        <td>{{unit.lecname}}</td>
+        <td>{{unit.faculty.name}}</td>
+        <td>{{unit.course.name}}</td>
+        <!-- <td></td> -->
+        <td><a href="{{unit.link}}">Click</a></td>
+        <td>
+          <a
+            href="{{url_for('updateunit', id=unit.id)}}"
+            class="btn btn-sm btn-info"
+            >Edit
+          </a>
+        </td>
+        <td>
+          <button
+            type="button"
+            class="btn btn-danger btn-sm"
+            data-toggle="modal"
+            data-target="#exampleModal-{{unit.id}}"
+          >
+            Delete
+          </button>
+        </td>
+      </tr>
+      <!--============= MODEL ===================-->
+      <div
+        class="modal fade"
+        id="exampleModal-{{unit.id}}"
+        tabindex="-1"
+        role="dialog"
+        aria-labelledby="exampleModalLabel"
+        aria-hidden="true"
+      >
+        <div class="modal-dialog" role="document">
+          <div class="modal-content">
+            <div class="modal-header">
+              <h5 class="modal-title" id="exampleModalLabel">{{unit.name }}</h5>
+              <button
+                type="button"
+                class="close"
+                data-dismiss="modal"
+                aria-label="Close"
+              >
+                <span aria-hidden="true">&times;</span>
+              </button>
+            </div>
+            <div class="modal-body">
+              <p class="text-danger">
+                Are you Sure that you want to delete this Category ({{ unit.name
+                }})
+              </p>
+            </div>
+            <div class="modal-footer">
+              <button
+                type="button"
+                class="btn btn-secondary"
+                data-dismiss="modal"
+              >
+                Cancel
+              </button>
+              <form action="{{url_for('deleteunit',id=unit.id)}}" method="post">
+                <button type="submit" class="btn btn-danger-sn">Delete</button>
+              </form>
+            </div>
+          </div>
+        </div>
+      </div>
+      <!--==============MODEL ===================-->
+      {% endfor %}
+    </tbody>
+  </table>
+  <ul class="pagination">
+    {% if units.has_prev %}
+      <li class="page-item"> <a class="page-link" href="{{ url_for('index', page=units.prev_num) }}">Previous</a></li>
+    {% else %}
+      <li class="page-item"><a class="page-link btn disabled" href="#">Previous</a></li>
+    {% endif %}
+
+    {% for page in units.iter_pages(left_edge=3, right_edge=3) %}
+    {% if page %}
+     
+     {% if page==units.page %}
+      <li class="page-item active"><a class="page-link" href="{{ url_for('index', page=page) }}">{{ page }}</a></li>
+     {% else %}
+      <li class="page-item"><a class="page-link" href="{{ url_for('index', page=page) }}">{{ page }}</a></li>
+     {% endif %}
+      
+    {% else %}
+     <li class="page-item disabled" id="example_ellipsis"><a href="#" class="page-link">…</a></li> 
+    {% endif %}
+    {% endfor %}
+
+
+
+    {% if units.has_next %}
+      <li class="page-item"> <a class="page-link" href="{{ url_for('index', page=units.next_num) }}">Next</a></li>
+    {% else %}
+      <li class="page-item"><a class="page-link btn disabled" href="#">Next</a></li>
+    {% endif %}
+
+</ul>
+</nav>
+</div>
+{% endblock content %}

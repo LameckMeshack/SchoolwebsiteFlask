@@ -1,0 +1,30 @@
+{% extends "base.html" %}
+<!-- {% block title %}
+KCA Student assistance website
+{% endblock %} -->
+{% block content %}
+{% include '_messages.html' %}
+<div class="container">
+  {% from "_formhelpers.html" import render_field %}
+  <div class="row">
+    <div class="col-md-4"></div>
+    <div class="col-md-4">
+        <div class="text-center h1 text-white bg-primary p-2">{{title}}</div>
+      <form method="post" enctype="multipart/form-data">
+        <div>
+          {{ render_field(form.username ,class="form-control") }} {{
+          render_field(form.password ,class="form-control") }}
+        </div>
+        <p><input type="submit" value="Login" class="btn btn-primary" />
+          
+      </form>
+      <a href="/register" class="btn btn-outline-secondary">Classrep Registration</a>
+    </div>
+    <div class="col-md-4"></div>
+</div>
+</div>
+
+
+    {% endblock %}
+  </div>
+</div>

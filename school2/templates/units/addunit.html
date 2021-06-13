@@ -1,0 +1,40 @@
+{% extends 'base.html' %} {% block content %} {% include '_messages.html' %}
+<div class="container">
+  <div class="row">
+    <div class="col-md-2"></div>
+    <div class="col-md-8">
+      <h2 class="text-center bg-info p-2" >Add Unit</h2>
+      {% from "_formhelpers.html" import render_field %}
+      <form action="" method="POST" enctype="multipart/form-data">
+        {{ render_field(form.name, class="form-control", placeholder="Add Unit name")}}
+        {{ render_field(form.unitcode, class="form-control", placeholder="Add Unit Code")}}
+        {{ render_field(form.lecName, class="form-control", placeholder="Add Lecturers name")}}
+        
+        <label for="faculty" >Add a faculty</label>
+        <select name="faculty" id="faculty
+        " class="form-control" required>
+            <option value="">Select A faculty </option>
+            {% for faculty in faculties %}
+        <option value={{faculty
+          .id}}>{{faculty.name}}</option>
+            {% endfor %}
+        </select>
+
+        <label for="course">Add a course</label>
+        <select name="course" id="course" class="form-control" required>
+            <option value="">Add a course</option>
+            {% for course in courses %}
+            <option value={{course.id}}>{{course.name}}</option>
+            {% endfor %}
+        </select>
+
+        
+        {{ render_field(form.link, class="form-control", placeholder="Add WhatsApp Link")}}
+        <button type="submit" class="btn btn-outline-info mt-4">Add Unit</button>    
+           
+    </div>
+    <div class="col-md-2"></div>
+  </div>
+</div>
+
+{% endblock content %}

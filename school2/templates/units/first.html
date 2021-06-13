@@ -1,0 +1,239 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <!-- Required meta tags -->
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+
+    <link rel="stylesheet" href="    https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css">
+    <style type="text/css">
+      * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+        font-family: Georgia, "Times New Roman", Times, serif;
+      }
+      section {
+        position: relative;
+        width: 100%;
+        min-height: 100vh;
+        display: flex;
+        flex-direction: column;
+        justify-content: flex-start;
+        background-color: rgb(209, 229, 230);
+      }
+      .logo{
+        margin-right: auto;
+        font-weight: 1000;
+        color: turquoise;
+        font-size: 30px;
+      }
+      .other{
+      display: flex;
+      flex-direction: row;
+      justify-content: space-between;
+      
+    }
+      .content {
+        max-width: 650px;
+        margin: 60px 100px;
+      }
+      .content .info h2 {
+        color: #226a80;
+        font-size: 55px;
+        text-transform: uppercase;
+        font-weight: 800;
+        letter-spacing: 2px;
+        line-height: 60px;
+        margin-bottom: 30px;
+      }
+      .content .info h2 span {
+        color: #fff;
+        font-size: 50px;
+        font-weight: 600;
+        margin-bottom: 40px;
+      }
+      .content .info p {
+        font-size: 16px;
+        font-weight: 500;
+        margin-bottom: 40px;
+      }
+      .content .info-btn {
+        color: #fff;
+        background: #226a80;
+        text-decoration: none;
+        text-transform: uppercase;
+        font-weight: 700;
+        letter-spacing: 2px;
+        padding: 10px 20px;
+        border-radius: 5px;
+        transition: 0.3s;
+        transition-property: background;
+      }
+      .content .info-btn:hover {
+        background: #0c4f60;
+      }
+    
+@media (max-width: 960px){
+   .content .info h2{
+     font-size: 30px;
+     line-height: 50px;
+   }
+   .other{
+      display: flex;
+      flex-direction: column;
+      
+    }
+    .info-btn{
+      margin-bottom: 5px;
+    }
+
+   .content .info h2 span{
+     font-size:30px;
+      font-weight: 400;
+   }
+   .content .info p{
+     font-size: 14px; 
+   }
+}
+@media  (max-width){
+  .content .info h2{
+     font-size: 35px;
+     line-height: 40px;
+   }
+
+   .content .info h2 span{
+     font-size: 40px;
+      font-weight: 600;
+   }
+   .content .info p{
+     font-size: 14px;
+   }
+}
+nav{
+  width:100%;
+  background:#63007f;
+  position:fixed;
+  top:0;
+  height:50px;
+  display:flex;
+  justify-content:flex-end;
+  padding-top: 15px;
+}
+
+label{
+  display:none;
+}
+
+
+nav li{
+  display:inline;
+}
+
+#nav-button{
+  display:none;
+}
+
+nav a{
+  text-decoration:none;
+  color:whitesmoke;
+  font-family:arial;
+  padding:0px 10px;
+  margin-top: 5px;
+  font-weight: 600;
+  
+}
+@media only screen 
+  and (max-width: 736px) 
+  and (orientation: portrait) {
+    nav{
+      align-items:center;
+    }
+    
+    nav ul{
+      position:absolute;
+      top:34px;
+      width:100%;
+      background:#4a0060;
+      max-height: 0;
+      transition: max-height 0.15s ease-out;
+      overflow:hidden;
+      transition:all 1s ease-in-out;
+    }
+    
+    nav li{
+      display:block;
+      width:100%;
+      padding:5px;  
+
+    }
+    
+    label{
+      display:block;
+      padding:0px 10px;
+      font-size:30px;
+      cursor:pointer;
+    }
+    
+    label:hover{
+      color:white;
+    }
+    
+    nav a{
+      width:100%;
+      display:block;
+    }
+    
+    #nav-button:checked ~ ul{
+        max-height:540px;
+        transition: all 1s ease-in-out;
+    }
+    
+    nav li:hover{
+      background:darkpurple;
+    }
+}
+
+
+    </style>
+    <title>Get the class links</title>
+  </head>
+  <body>
+    
+    <section>    
+      <nav>
+        <div class="logo">
+          LinkYADaro
+        </div> 
+        <input type = "checkbox" id = "nav-button">
+        </input>
+        <label for = "nav-button">&#9776;</label>
+        <ul>
+          <li><a href = "#">Home</a></li>
+          <li><a href = "/index">ClassLinks</a></li>
+          <li><a href = "/login">Classreps</a></li>
+        </ul>   
+      </nav>
+      <div class="content">
+        <div class="info">
+          <h2>Get the Class WhatsApp Links<span>Find Your class</span></h2>
+          <p>
+            Hello this is not an official school website but just a website to help comrades get their online classes WhatsApp groups.For now some of the links are not for WhatsApp but just some dummy sites
+            The lecturer lecturer-contacts link will take you to kca website.
+          </p>
+          <div class="other">
+            <a href="/index" class="info-btn">Get WhatsApp Links</a>
+            <a href="/login" class="info-btn">Classreps Login</a>
+            <a href="https://focim.kca.ac.ke/lecturer-contacts/" class="info-btn">COT lecturer-contacts</a>
+            
+            <a href="https://sob.kca.ac.ke/lecturer-contacts/" class="info-btn">COB lecturer-contacts</a>
+            <a href="https://feas.kca.ac.ke/" class="info-btn">SOE lecturer-contacts</a>
+            
+          </div>
+        </div>
+      </div>
+    </section>
+    </div>
+    
+  </body>
+</html>
